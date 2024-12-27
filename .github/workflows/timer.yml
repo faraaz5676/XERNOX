@@ -1,0 +1,16 @@
+name: Timer Script
+
+on:
+  schedule:
+    - cron: "*/5 * * * *" # Runs every 5 minutes
+  workflow_dispatch: # Allows manual triggering from the Actions tab
+
+jobs:
+  run-timer:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Log Time
+        run: |
+          echo "Current Time: $(date)"
+          echo "This workflow is running continuously on a schedule."
