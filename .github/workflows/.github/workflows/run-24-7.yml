@@ -1,0 +1,29 @@
+name: Run Repo 24/7
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "*/15 * * * *" # Runs every 15 minutes
+
+jobs:
+  run-repo:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js (optional, for JS projects)
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    - name: Install dependencies
+      run: |
+        npm install pip install -r requirements.txt
+
+    - name: Run the code
+      run: |
+        node python script.py
